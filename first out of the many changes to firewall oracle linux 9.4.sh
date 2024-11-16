@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Flush all existing rules to start fresh
 sudo iptables -F
 sudo iptables -X
@@ -34,6 +36,6 @@ sudo iptables -A INPUT -p tcp --dport 8000 -m conntrack --ctstate NEW -j ACCEPT
 sudo iptables -A INPUT -j DROP
 
 # Save the rules to persist across reboots
-sudo iptables-save | sudo tee /etc/iptables/rules.v4
+sudo iptables-save | sudo tee /etc/iptables/rules.v4 > /dev/null
 
-
+echo "Iptables rules applied and saved successfully."
